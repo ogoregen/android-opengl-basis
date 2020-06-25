@@ -10,28 +10,28 @@ class Shader{
   Shader(){
 
     String vsCode = "" +
-            "attribute vec3 position;" +
-            "attribute vec2 texturePosition;" +
-            "attribute vec3 instancePosition;" +
-            "varying vec2 textureP;" +
-            "uniform mat4 projection;" +
-            "uniform mat4 view;" +
-            "uniform mat4 model;" +
-            "void main(){" +
-            "  textureP = texturePosition;" +
-            "  gl_Position = projection * view * model * vec4(position + instancePosition, 1);" +
-            "}";
+      "attribute vec3 position;" +
+      "attribute vec2 texturePosition;" +
+      "attribute vec3 instancePosition;" +
+      "varying vec2 textureP;" +
+      "uniform mat4 projection;" +
+      "uniform mat4 view;" +
+      "uniform mat4 model;" +
+      "void main(){" +
+      "  textureP = texturePosition;" +
+      "  gl_Position = projection * view * model * vec4(position + instancePosition, 1);" +
+      "}";
 
     String fsCode = "" +
-            "precision mediump float;" +
-            "uniform vec4 color;" +
-            "uniform bool usingTexture;" +
-            "varying vec2 textureP;" +
-            "uniform sampler2D textureSampler;" +
-            "void main(){" +
-            "  if(usingTexture) gl_FragColor = texture2D(textureSampler, textureP);" +
-            "  else gl_FragColor = color;" +
-            "}";
+      "precision mediump float;" +
+      "uniform vec4 color;" +
+      "uniform bool usingTexture;" +
+      "varying vec2 textureP;" +
+      "uniform sampler2D textureSampler;" +
+      "void main(){" +
+      "  if(usingTexture) gl_FragColor = texture2D(textureSampler, textureP);" +
+      "  else gl_FragColor = color;" +
+      "}";
 
     int vs = compileShader(GLES30.GL_VERTEX_SHADER, vsCode);
     int fs = compileShader(GLES30.GL_FRAGMENT_SHADER, fsCode);
