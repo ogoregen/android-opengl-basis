@@ -1,6 +1,4 @@
 
-package xyz.flighty.scratch;
-
 import android.opengl.GLES30;
 
 class Shader{
