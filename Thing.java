@@ -1,6 +1,4 @@
 
-package xyz.flighty.scratch;
-
 import android.content.Context;
 import android.opengl.GLES30;
 import java.nio.ByteBuffer;
