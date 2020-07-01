@@ -17,7 +17,7 @@ public class flyRenderer implements GLSurfaceView.Renderer{
 
   Thing parallelogram;
   float[] vertices = {
-
+     //x,   y, z
     -100, -50, 0,
        0,  50, 0,
      100,  50, 0,
