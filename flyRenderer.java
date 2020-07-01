@@ -3,9 +3,6 @@ import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.content.Context;
-import android.util.Log;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
 
 public class flyRenderer implements GLSurfaceView.Renderer{
 
@@ -15,7 +12,7 @@ public class flyRenderer implements GLSurfaceView.Renderer{
   float[] projection = new float[16];
   float[] view = new float[16];
   float[] model = new float[16];
-  
+    
   flyRenderer(int width_, int height_, Context context_){
     
     width = width_;
@@ -24,25 +21,13 @@ public class flyRenderer implements GLSurfaceView.Renderer{
   }
 
   public void onSurfaceCreated(GL10 unused, EGLConfig config){
-
-    GLES30.glEnable(GLES30.GL_DEPTH_TEST);
-    GLES30.glEnable(GLES30.GL_BLEND);
-    GLES30.glBlendFunc(GL10.GL_ONE, GL10.GL_ONE_MINUS_SRC_ALPHA);
-    GLES30.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     
-    shader = new Shader();
-    shader.bind();
+    setup();
     
-    shader.setUniform("usingTexture", true);
+    GLES30.glClearColor(0.0f, 0.0f, 0.0f, 1.0f); //background color
+    shader.setUniform("usingTexture", false);
     float[] fillColor = {1.0f, 1.0f, 1.0f, 1.0f};
     shader.setUniformV("color", fillColor);
-
-    Matrix.setIdentityM(projection, 0);
-    Matrix.setIdentityM(view, 0);
-    Matrix.setIdentityM(model, 0);
-    shader.setUniformM("projection", projection);
-    shader.setUniformM("view", view);
-    shader.setUniformM("model", model);
   }
 
   public void onDrawFrame(GL10 unused){
@@ -57,5 +42,22 @@ public class flyRenderer implements GLSurfaceView.Renderer{
     GLES30.glViewport(0, 0, width, height);
     Matrix.orthoM(projection, 0, 0, width, height, 0, -10, 10);
     shader.setUniformM("projection", projection);
+  }
+  
+  public void setup(){
+    
+    GLES30.glEnable(GLES30.GL_DEPTH_TEST);
+    GLES30.glEnable(GLES30.GL_BLEND);
+    GLES30.glBlendFunc(GL10.GL_ONE, GL10.GL_ONE_MINUS_SRC_ALPHA);
+    
+    shader = new Shader();
+    shader.bind();
+    
+    Matrix.setIdentityM(projection, 0);
+    Matrix.setIdentityM(view, 0);
+    Matrix.setIdentityM(model, 0);
+    shader.setUniformM("projection", projection);
+    shader.setUniformM("view", view);
+    shader.setUniformM("model", model);
   }
 }
