@@ -3,6 +3,7 @@ import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.content.Context;
+import javax.microedition.khronos.opengles.GL10;
 
 public class flyRenderer implements GLSurfaceView.Renderer{
 
