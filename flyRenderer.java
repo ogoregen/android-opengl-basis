@@ -6,7 +6,7 @@ import android.opengl.Matrix;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public class flyRenderer implements GLSurfaceView.Renderer{
+public class flyRenderer implements GLSurfaceView.Renderer{ //well, the name Renderer was taken
 
   int width, height;
   Context context;
