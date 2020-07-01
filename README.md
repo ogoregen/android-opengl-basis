@@ -1,2 +1,4 @@
 
-This repository includes everything needed to easily develop an application contatining fullscreen OpenGL activities, and only this.
+**Setup
+
+Create an empty project, add an empty activity for GraphicsActivity, add the classes to your package and you are ready to render!
