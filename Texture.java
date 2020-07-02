@@ -30,4 +30,9 @@ class Texture{
 
     GLES30.glBindTexture(GLES30.GL_TEXTURE_2D, id[0]);
   }
+  
+  static void unbind(){
+  
+    GLES30.glBindTexture(GLES30.GL_TEXTURE_2D, 0);
+  }
 }
