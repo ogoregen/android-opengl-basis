@@ -53,6 +53,11 @@ class Shader{
 
     GLES30.glUseProgram(id);
   }
+  
+  static void unbind(){
+    
+    GLES30.glUseProgram(0);
+  }
 
   int getAttributeLocation(String name){
 
