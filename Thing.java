@@ -1,6 +1,6 @@
 
 import android.content.Context;
-import android.opengl.GLES30;
+import static android.opengl.GLES30.*;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -38,31 +38,31 @@ class Thing{
     int[] vbo = new int[1];
     int[] ebo = new int[1];
 
-    GLES30.glGenVertexArrays(1, vao, 0);
-    GLES30.glGenBuffers(1, vbo, 0);
-    GLES30.glGenBuffers(1, ebo, 0);
+    glGenVertexArrays(1, vao, 0);
+    glGenBuffers(1, vbo, 0);
+    glGenBuffers(1, ebo, 0);
 
-    GLES30.glBindVertexArray(vao[0]);
+    glBindVertexArray(vao[0]);
 
-    GLES30.glBindBuffer(GLES30.GL_ARRAY_BUFFER, vbo[0]);
-    GLES30.glBufferData(GLES30.GL_ARRAY_BUFFER, vertexBuffer.capacity() * 4, vertexBuffer, GLES30.GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+    glBufferData(GL_ARRAY_BUFFER, vertexBuffer.capacity() * 4, vertexBuffer, GL_STATIC_DRAW);
 
-    GLES30.glBindBuffer(GLES30.GL_ELEMENT_ARRAY_BUFFER, ebo[0]);
-    GLES30.glBufferData(GLES30.GL_ELEMENT_ARRAY_BUFFER, indexBuffer.capacity() * 2, indexBuffer, GLES30.GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo[0]);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexBuffer.capacity() * 2, indexBuffer, GL_STATIC_DRAW);
 
-    GLES30.glVertexAttribPointer(positionAttributeLocation, 3, GLES30.GL_FLOAT, false, stride, 0);
-    GLES30.glEnableVertexAttribArray(positionAttributeLocation);
+    glVertexAttribPointer(positionAttributeLocation, 3, GL_FLOAT, false, stride, 0);
+    glEnableVertexAttribArray(positionAttributeLocation);
 
     if(!noTextureCoordinates){
 
-      GLES30.glVertexAttribPointer(texturePositionAttributeLocation, 2, GLES30.GL_FLOAT, false, stride, 3 * 4);
-      GLES30.glEnableVertexAttribArray(texturePositionAttributeLocation);
+      glVertexAttribPointer(texturePositionAttributeLocation, 2, GL_FLOAT, false, stride, 3 * 4);
+      glEnableVertexAttribArray(texturePositionAttributeLocation);
     }
 
-    GLES30.glBindVertexArray(0);
+     glBindVertexArray(0);
 
-    GLES30.glDeleteBuffers(1, vbo, 0);
-    GLES30.glDeleteBuffers(1, ebo, 0);
+     glDeleteBuffers(1, vbo, 0);
+     glDeleteBuffers(1, ebo, 0);
   }
 
   void setTexture(int resourceID, Context context){
@@ -84,38 +84,38 @@ class Thing{
       positionBuffer.position(0);
 
       int[] vbo2 = new int[1];
-      GLES30.glGenBuffers(1, vbo2, 0);
+      glGenBuffers(1, vbo2, 0);
 
-      GLES30.glBindVertexArray(vao[0]);
-      GLES30.glBindBuffer(GLES30.GL_ARRAY_BUFFER, vbo2[0]);
+      glBindVertexArray(vao[0]);
+      glBindBuffer(GL_ARRAY_BUFFER, vbo2[0]);
 
-      GLES30.glBufferData(GLES30.GL_ARRAY_BUFFER, positionBuffer.capacity() * 4, positionBuffer, GLES30.GL_STATIC_DRAW);
+      glBufferData(GL_ARRAY_BUFFER, positionBuffer.capacity() * 4, positionBuffer, GL_STATIC_DRAW);
 
-      GLES30.glVertexAttribPointer(location, 3, GLES30.GL_FLOAT, false, 3 * 4, 0);
-      GLES30.glEnableVertexAttribArray(location);
+      glVertexAttribPointer(location, 3, GL_FLOAT, false, 3 * 4, 0);
+      glEnableVertexAttribArray(location);
 
-      GLES30.glVertexAttribDivisor(location, 1);
-      GLES30.glBindVertexArray(0);
+      glVertexAttribDivisor(location, 1);
+      glBindVertexArray(0);
 
-      GLES30.glDeleteBuffers(1, vbo2, 0);
+      glDeleteBuffers(1, vbo2, 0);
     }
   }
 
   void bind(){
 
-    GLES30.glBindVertexArray(vao[0]);
+    glBindVertexArray(vao[0]);
   }
 
   static void unbind(){
 
-    GLES30.glBindVertexArray(0);
+    glBindVertexArray(0);
   }
 
   void display(){
 
     bind();
     if(textureSet) texture.bind();
-    if(count == 1) GLES30.glDrawElements(GLES30.GL_TRIANGLES, elementCount, GLES30.GL_UNSIGNED_SHORT, 0);
-    else if(count > 1) GLES30.glDrawElementsInstanced(GLES30.GL_TRIANGLES, elementCount, GLES30.GL_UNSIGNED_SHORT, 0, count);
+    if(count == 1) glDrawElements(GL_TRIANGLES, elementCount, GL_UNSIGNED_SHORT, 0);
+    else if(count > 1) glDrawElementsInstanced(GL_TRIANGLES, elementCount, GL_UNSIGNED_SHORT, 0, count);
   }
 }
