@@ -1,4 +1,4 @@
-This repository contains everything needed to easily create an app with a fullscreen OpenGL activity.
+This repository contains everything needed to easily create an app with a fullscreen OpenGL activity. It works out of the box.
 
 ## Setup ##
 
