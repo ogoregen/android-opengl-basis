@@ -11,6 +11,6 @@ uniform mat4 model;
 
 void main(){
 
-	textureP = texturePosition;
-	gl_Position = projection * view * model * vec4(position + instancePosition, 1);
+  textureP = texturePosition;
+  gl_Position = projection * view * model * vec4(position + instancePosition, 1);
 }
