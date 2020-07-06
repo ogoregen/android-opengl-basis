@@ -68,8 +68,8 @@ public class flyRenderer implements GLSurfaceView.Renderer{ //well, the name Ren
 
   public void setup(){
 
-    glEnable( GL_DEPTH_TEST);
-    glEnable( GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
     glBlendFunc(GL10.GL_ONE, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
     shader = new Shader();
