@@ -72,7 +72,7 @@ public class flyRenderer implements GLSurfaceView.Renderer{ //well, the name Ren
     glEnable(GL_BLEND);
     glBlendFunc(GL10.GL_ONE, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
-    shader = new Shader();
+    shader = new Shader(R.raw.vertex, R.raw.fragment, context);
     shader.bind();
 
     Matrix.setIdentityM(projection, 0);
