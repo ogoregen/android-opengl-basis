@@ -45,7 +45,7 @@ public class GraphicsActivity extends AppCompatActivity{
     public SurfaceView(Context context){
 
       super(context);
-      setEGLContextClientVersion(2);
+      setEGLContextClientVersion(3);
       renderer = new flyRenderer(Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels, context);
       setRenderer(renderer);
     }
