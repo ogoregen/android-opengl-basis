@@ -55,6 +55,11 @@ class Shader{
 
     glUseProgram(id);
   }
+  
+  static void unbind(){
+   
+    glUseProgram(0);
+  }
 
   int getAttributeLocation(String name){
 
